@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baiding.vue.dao.AlbumCategoryDAO">
+
+    <resultMap id="albumCategory" type="com.baiding.vue.model.po.AlbumCategory">
+        <id property="id" column="id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="categoryName" column="category_name"/>
+        <result property="rank" column="rank"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="desc" column="description"/>
+        <result property="removed" column="removed"/>
+    </resultMap>
+
+    <select id="getAlbumCategory" parameterType="com.baiding.vue.model.vo.AlbumCategoryQueryCondition"
+            resultMap="albumCategory">
+        SELECT id,parent_id,category_name,image_url,removed,description,rank FROM category
+        <where>
+            <if test = "removed != -1">
+                AND removed = #{removed}
+            </if>
+            AND parent_id = #{parentId}
+        </where>
+        ORDER BY rank DESC
+        limit #{pageSize}
+    </select>
+
+    <select id="getAlbumCategoryChildrenCount" parameterType="long" resultType="int">
+        SELECT count(*) FROM category WHERE parent_id = #{parentId}
+    </select>
+    
+    <select id="getAlbumCategoryById" parameterType="long" resultMap="albumCategory">
+        SELECT id,parent_id,category_name,image_url,removed,description,rank FROM category WHERE id = #{id}
+    </select>
+
+    <select id="queryAlbumCategoryByName"
+            resultMap="albumCategory">
+        SELECT id,parent_id,category_name,image_url,removed,description,rank
+        FROM category WHERE category_name = #{categoryName} AND id != #{id}
+    </select>
+
+    <insert id="addAlbumCategory" parameterType="com.baiding.vue.model.po.AlbumCategory">
+        INSERT INTO category(
+          parent_id,
+          category_name,
+          image_url,
+          removed,
+          description,
+          rank
+        )VALUES (
+          #{parentId},
+          #{categoryName},
+          #{imageUrl},
+          #{removed},
+          #{desc},
+          #{rank}
+        )
+    </insert>
+    
+    <update id="editAlbumCategory" parameterType="com.baiding.vue.model.po.AlbumCategory">
+        UPDATE category
+        <set>
+            <if test="categoryName != null and categoryName != ''">
+                category_name = #{categoryName},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="rank != null">
+                rank = #{rank},
+            </if>
+            <if test="imageUrl != null and imageUrl != ''">
+                image_url = #{imageUrl},
+            </if>
+            <if test="desc != null and desc !=''">
+                description = #{desc}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    
+    <update id="editAlbumCategoryStatus">
+        UPDATE category SET removed = #{status} WHERE id = #{id}
+    </update>
+
+    <select id="getNameById" parameterType="long" resultType="string">
+        SELECT category_name from category WHERE id = #{id}
+    </select>
+
+</mapper>

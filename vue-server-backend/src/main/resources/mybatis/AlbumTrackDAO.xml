@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baiding.vue.dao.AlbumTrackDAO">
+
+    <resultMap id="albumTrack" type="com.baiding.vue.model.po.AlbumTrack">
+        <id property="id" column="id"></id>
+        <result property="albumId" column="album_id"></result>
+        <result property="title" column="title"></result>
+        <result property="playedCount" column="played_count"></result>
+        <result property="titleImageUrl" column="title_image_url"></result>
+        <result property="imageUrl" column="image_url"></result>
+        <result property="mediaUrl" column="media_url"></result>
+        <result property="removed" column="removed"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="duration" column="duration"></result>
+        <result property="summary" column="summary"></result>
+        <result property="description" column="description"></result>
+        <result property="free" column="free"></result>
+        <result property="isPublic" column="public"></result>
+        <result property="commentable" column="commentable"></result>
+        <result property="releaseTime" column="release_time"></result>
+    </resultMap>
+
+    <select id="getAllAlbumTrack" parameterType="com.baiding.vue.model.vo.AlbumTrackQueryCondition"
+            resultMap="albumTrack">
+        SELECT * FROM track
+        <where>
+            <if test = "id != null and id != 0">
+                AND id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                AND title LIKE  concat('%',#{title},'%')
+            </if>
+            AND album_id = #{albumId}
+        </where>
+        ORDER BY update_time DESC
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="getAlbumTrackById" parameterType="long" resultMap="albumTrack">
+        SELECT * FROM track WHERE id = #{id}
+    </select>
+
+    <select id="getAlbumTrackCount" parameterType="com.baiding.vue.model.vo.AlbumTrackQueryCondition"
+        resultType="int">
+        SELECT count(1) FROM track
+        <where>
+            <if test = "id != null and id != 0">
+                AND id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                AND title LIKE  concat('%',#{title},'%')
+            </if>
+            AND album_id = #{albumId}
+        </where>
+    </select>
+
+    <insert id="addAlbumTrack" parameterType="com.baiding.vue.model.po.AlbumTrack">
+        INSERT INTO track(
+            album_id,
+            title,
+            summary,
+            description,
+            title_image_url,
+            image_url,
+            media_url,
+            duration,
+            free,
+            `public`,
+            played_count,
+            update_time,
+            release_time,
+            commentable,
+            removed
+        )VALUES (
+            #{albumId},
+            #{title},
+            #{summary},
+            #{description},
+            #{titleImageUrl},
+            #{imageUrl},
+            #{mediaUrl},
+            #{duration},
+            #{free},
+            #{isPublic},
+            #{playedCount},
+            #{updateTime},
+            #{releaseTime},
+            #{commentable},
+            #{removed}
+        )
+    </insert>
+
+    <update id="editAlbumTrack" parameterType="com.baiding.vue.model.po.AlbumTrack">
+        UPDATE track
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="titleImageUrl != null and titleImageUrl != ''">
+                title_image_url = #{titleImageUrl},
+            </if>
+            <if test="imageUrl != null and imageUrl != ''">
+                image_url = #{imageUrl},
+            </if>
+            <if test="mediaUrl != null and mediaUrl != ''">
+                media_url = #{mediaUrl},
+            </if>
+            <if test="removed != null">
+                removed = #{removed},
+            </if>
+            <if test="updateTime != null ">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <update id="editAlbumTrackStatus">
+        UPDATE track SET removed = #{removed} WHERE id = #{id}
+    </update>
+</mapper>

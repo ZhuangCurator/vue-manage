@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baiding.vue.dao.AlbumDAO">
+
+    <resultMap id="album" type="com.baiding.vue.model.po.Album">
+        <id property="id" column="id"/>
+        <result property="anchor" column="anchor"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="author" column="author"/>
+        <result property="title" column="title"/>
+        <result property="titleImageUrl" column="title_image_url" />
+        <result property="coverImageUrl" column="cover_image_url"/>
+        <result property="summary" column="summary"/>
+        <result property="playedCount" column="played_count"/>
+        <result property="description" column="description"/>
+        <result property="subscriptionCount" column="subscription_count"/>
+        <result property="trackCount" column="track_count"/>
+        <result property="nation" column="nation"/>
+        <result property="hot" column="hot"/>
+        <result property="free" column="free"/>
+        <result property="finished" column="finished"/>
+        <result property="commentable" column="commentable"/>
+        <result property="rssAddress" column="rss_address"/>
+        <result property="removed" column="removed"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getAllAlbum" parameterType="com.baiding.vue.model.vo.AlbumQueryCondition"
+            resultMap="album">
+        SELECT * FROM album
+        <where>
+            <if test = "id != null and id != 0">
+                AND id = #{id}
+            </if>
+            <if test = "albumCategoryId != null and albumCategoryId != 0">
+                AND category_id = #{albumCategoryId}
+            </if>
+            <if test = "albumTitle != null and albumTitle != ''">
+                AND title LIKE concat('%',#{albumTitle},'%')
+            </if>
+            <if test = "anchor != null and anchor != ''">
+                AND anchor LIKE concat('%',#{anchor},'%')
+            </if>
+        </where>
+        ORDER BY update_time DESC
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="getAllAlbumCount" parameterType="com.baiding.vue.model.vo.AlbumQueryCondition"
+            resultType="int">
+        SELECT count(1) FROM album
+        <where>
+            <if test = "id != null and id != 0">
+                AND id = #{id}
+            </if>
+            <if test = "albumCategoryId != null and albumCategoryId != 0">
+                AND category_id = #{albumCategoryId}
+            </if>
+            <if test = "albumTitle != null and albumTitle != ''">
+                AND title LIKE concat('%',#{albumTitle},'%')
+            </if>
+            <if test = "anchor != null and anchor != ''">
+                AND anchor LIKE concat('%',#{anchor},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getAlbumById" parameterType="long"  resultMap="album">
+        SELECT * FROM album WHERE  id = #{id}
+    </select>
+
+    <insert id="addlbum" parameterType="com.baiding.vue.model.po.Album">
+        INSERT INTO album(
+            category_id,
+            anchor,
+            author,
+            title,
+            title_image_url,
+            cover_image_url,
+            summary,
+            played_count,
+            description,
+            subscription_count,
+            track_count,
+            nation,
+            hot,
+            free,
+            finished,
+            commentable,
+            rss_address,
+            removed,
+            update_time
+        )VALUES (
+            #{categoryId},
+            #{anchor},
+            #{author},
+            #{title},
+            #{titleImageUrl},
+            #{coverImageUrl},
+            #{summary},
+            #{playedCount},
+            #{description},
+            #{subscriptionCount},
+            #{trackCount},
+            #{nation},
+            #{hot},
+            #{free},
+            #{finished},
+            #{commentable},
+            #{rssAddress},
+            #{removed},
+            #{updateTime}
+        )
+    </insert>
+
+    <update id="editALbum" parameterType="com.baiding.vue.model.po.Album">
+        UPDATE album
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="categoryId != 0">
+                category_id = #{categoryId},
+            </if>
+            <if test="anchor != null and anchor != ''">
+                anchor = #{anchor},
+            </if>
+            <if test="author != null and author != ''">
+                author = #{author},
+            </if>
+            <if test="nation != null and nation != ''">
+                nation = #{nation},
+            </if>
+            <if test="hot != null">
+                hot = #{hot},
+            </if>
+            <if test="rssAddress != null and rssAddress != ''">
+                rss_address = #{rssAddress},
+            </if>
+            <if test="titleImageUrl != null and titleImageUrl != ''">
+                title_image_url = #{titleImageUrl},
+            </if>
+            <if test="coverImageUrl != null and coverImageUrl != ''">
+                cover_image_url = #{coverImageUrl},
+            </if>
+            <if test="removed != null">
+                removed = #{removed},
+            </if>
+            <if test="summary != null and summary !=''">
+                summary = #{summary},
+            </if>
+            <if test="description != null and description !=''">
+                description = #{description}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="editAlbumStatus">
+         UPDATE album SET removed = #{removed} WHERE id = #{id}
+    </update>
+
+</mapper>
