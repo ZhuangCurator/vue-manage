@@ -10,13 +10,13 @@ vue-manage包含了两个项目，一个为后台项目：vue-serevr-backend,提
 
 1. 执行数据库文件
 
-   ![](.\image\111.png)
-
+   
+ ![](https://github.com/LiuJiaBaiDing/vue-manage/blob/master/image/111.png)
    在项目的资源文件夹static目录下是后台的数据库文件，在自己的数据库中新建一个数据库，名为 `vue-manage`,之后运行SQL文件就可以了
 
 2. 修改配置文件中数据库的配置
 
-   ![](C:\Users\BaiDing\Desktop\222.png)
+   ![](https://github.com/LiuJiaBaiDing/vue-manage/blob/master/image/222.png)
 
    将数据库连接配置改为自己的就可以了
 
