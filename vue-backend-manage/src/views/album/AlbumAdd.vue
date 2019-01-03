@@ -148,7 +148,8 @@
     methods: {
       ...mapActions([
         'albumAdd',
-        'uploadImage'
+        'uploadImage',
+        'getRegion'
       ]),
       handleCoverImageUpload (file) {
         this.coverImage = file
@@ -161,7 +162,6 @@
       // 监听分类下拉树组件传回的值
       getCategoryId (value) {
         this.dataForm.categoryId = value
-        console.log('返回的分类id: ', this.categoryId)
       },
       // 上传函数，第一个字段为要上传的文件名称  第二个字段为回显的url赋值的字段
       upload (file, name) {

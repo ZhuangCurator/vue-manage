@@ -7,6 +7,13 @@ export const albumPage = (param) => {
   })
 }
 
+export const getRegion = () => {
+  return axios.getRequest({
+    url: '/user/region',
+    method: 'get',
+  })
+}
+
 export const album = (param) => {
   return axios.getRequest({
     url: '/album/' + param.id,

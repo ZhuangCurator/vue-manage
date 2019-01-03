@@ -1,4 +1,4 @@
-import { albumPage, album, albumAdd, albumStatus, albumEdit} from '@/api/album'
+import { albumPage, getRegion, album, albumAdd, albumStatus, albumEdit} from '@/api/album'
 
 const state = {
 }
@@ -8,6 +8,16 @@ const actions = {
     return new Promise((resolve, reject) => {
       albumPage(param).then(res => {
         console.log('albumPage#response', res)
+        resolve(res)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getRegion ({ commit }) {
+    return new Promise((resolve, reject) => {
+      getRegion().then(res => {
+        console.log('getRegion#response', res)
         resolve(res)
       }).catch(error => {
         reject(error)

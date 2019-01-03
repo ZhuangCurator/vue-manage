@@ -37,7 +37,7 @@ export default [
     name: 'user',
     component: Main,
     meta: {
-
+      hideInBread: true
     },
     children: [
       {
