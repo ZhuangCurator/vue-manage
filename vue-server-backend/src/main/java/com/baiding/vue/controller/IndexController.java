@@ -1,5 +1,6 @@
 package com.baiding.vue.controller;
 
+import com.baiding.vue.config.VerificationCode;
 import com.baiding.vue.model.Login;
 import com.baiding.vue.model.Result;
 import com.baiding.vue.model.po.User;
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -162,6 +165,16 @@ public class IndexController {
             e.printStackTrace();
             return Result.build(0,"批量导入用户出异常了");
         }
+    }
+
+    @GetMapping("/verifyCode")
+    public void verifyCode(HttpServletRequest request, HttpServletResponse resp) throws IOException {
+        VerificationCode code = new VerificationCode();
+        BufferedImage image = code.getImage();
+        String text = code.getText();
+        HttpSession session = request.getSession(true);
+        session.setAttribute("verify_code", text);
+        VerificationCode.output(image,resp.getOutputStream());
     }
 
     /**
