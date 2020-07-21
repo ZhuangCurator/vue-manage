@@ -1,7 +1,7 @@
-package com.baiding.vue.dao;
+package com.huahai.baiding.vue.dao;
 
-import com.baiding.vue.model.po.User;
-import com.baiding.vue.model.vo.UserQueryCondition;
+import com.huahai.baiding.vue.model.po.User;
+import com.huahai.baiding.vue.model.vo.UserQueryCondition;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

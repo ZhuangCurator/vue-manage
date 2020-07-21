@@ -1,4 +1,4 @@
-package com.baiding.vue.config;
+package com.huahai.baiding.vue.config;
 
 /**
  * @Author: BaiDing

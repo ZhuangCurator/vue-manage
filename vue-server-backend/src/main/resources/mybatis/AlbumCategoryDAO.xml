@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.baiding.vue.dao.AlbumCategoryDAO">
+<mapper namespace="com.huahai.baiding.vue.dao.AlbumCategoryDAO">
 
-    <resultMap id="albumCategory" type="com.baiding.vue.model.po.AlbumCategory">
+    <resultMap id="albumCategory" type="com.huahai.baiding.vue.model.po.AlbumCategory">
         <id property="id" column="id"/>
         <result property="parentId" column="parent_id"/>
         <result property="categoryName" column="category_name"/>
@@ -14,7 +14,7 @@
         <result property="removed" column="removed"/>
     </resultMap>
 
-    <select id="getAlbumCategory" parameterType="com.baiding.vue.model.vo.AlbumCategoryQueryCondition"
+    <select id="getAlbumCategory" parameterType="com.huahai.baiding.vue.model.vo.AlbumCategoryQueryCondition"
             resultMap="albumCategory">
         SELECT id,parent_id,category_name,image_url,removed,description,rank FROM category
         <where>
@@ -41,7 +41,7 @@
         FROM category WHERE category_name = #{categoryName} AND id != #{id}
     </select>
 
-    <insert id="addAlbumCategory" parameterType="com.baiding.vue.model.po.AlbumCategory">
+    <insert id="addAlbumCategory" parameterType="com.huahai.baiding.vue.model.po.AlbumCategory">
         INSERT INTO category(
           parent_id,
           category_name,
@@ -59,7 +59,7 @@
         )
     </insert>
     
-    <update id="editAlbumCategory" parameterType="com.baiding.vue.model.po.AlbumCategory">
+    <update id="editAlbumCategory" parameterType="com.huahai.baiding.vue.model.po.AlbumCategory">
         UPDATE category
         <set>
             <if test="categoryName != null and categoryName != ''">

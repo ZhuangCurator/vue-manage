@@ -1,4 +1,4 @@
-package com.baiding.vue.model.po;
+package com.huahai.baiding.vue.model.po;
 
 import java.io.Serializable;
 import java.util.Date;

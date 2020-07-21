@@ -3,28 +3,28 @@ import config from '@/config'
 import { forEach, hasOneOf, objEqual } from '@/libs/tools'
 
 export const TOKEN_KEY = 'token'
-export const USERID_KEY = 'userId'
+export const USERNAME_KEY = 'username'
 
 export const setToken = (token) => {
-  Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})
+  localStorage.setItem(TOKEN_KEY, token)
 }
 
 export const getToken = () => {
-  const token = Cookies.get(TOKEN_KEY)
-  if (token)
-    return token
-  else
+  const token = localStorage.getItem(TOKEN_KEY)
+  if (token) { return token}
+  else {
     return ''
+  }
 }
 
-export const setUserId = (userId) => {
-  Cookies.set(USERID_KEY, userId, {expires: config.cookieExpires || 1})
+export const setUsername = (username) => {
+  localStorage.setItem(USERNAME_KEY, username)
 }
 
-export const getUserId = () => {
-  const userId = Cookies.get(USERID_KEY)
-  if (userId)
-    return userId
+export const getUsername = () => {
+  const username = localStorage.getItem(USERNAME_KEY)
+  if (username)
+    return username
   else
     return ''
 }

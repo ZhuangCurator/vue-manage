@@ -1,4 +1,4 @@
-package com.baiding.vue;
+package com.huahai.baiding.vue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

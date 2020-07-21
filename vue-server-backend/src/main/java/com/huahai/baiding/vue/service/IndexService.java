@@ -1,9 +1,9 @@
-package com.baiding.vue.service;
+package com.huahai.baiding.vue.service;
 
-import com.baiding.vue.model.Page;
-import com.baiding.vue.model.po.User;
-import com.baiding.vue.model.vo.UserParam;
-import com.baiding.vue.model.vo.UserQueryCondition;
+import com.huahai.baiding.vue.model.Page;
+import com.huahai.baiding.vue.model.po.User;
+import com.huahai.baiding.vue.model.vo.UserParam;
+import com.huahai.baiding.vue.model.vo.UserQueryCondition;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package com.baiding.vue.service;
+package com.huahai.baiding.vue.service;
 
-import com.baiding.vue.model.BaseStatusParam;
-import com.baiding.vue.model.Page;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.vo.AlbumTrackParam;
-import com.baiding.vue.model.vo.AlbumTrackQueryCondition;
+import com.huahai.baiding.vue.model.BaseStatusParam;
+import com.huahai.baiding.vue.model.Page;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.vo.AlbumTrackParam;
+import com.huahai.baiding.vue.model.vo.AlbumTrackQueryCondition;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 <template>
   <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
     <FormItem prop="userName">
-      <Input v-model="form.email" placeholder="请输入邮箱账号">
+      <Input v-model="form.username" placeholder="请输入用户名">
         <span slot="prepend">
           <Icon :size="16" type="ios-person"></Icon>
         </span>
@@ -14,16 +14,25 @@
         </span>
       </Input>
     </FormItem>
+    <FormItem prop="imageCode">
+      <Input v-model="form.imageCode" placeholder="请输入验证码">
+        <span slot="prepend">
+          <Icon :size="14" type="md-lock"></Icon>
+        </span>
+      </Input>
+      <img :src="imageUrl" alt="" @click="getImageCode()">
+    </FormItem>
     <FormItem>
       <Button @click="handleSubmit" type="primary" long>登录</Button>
     </FormItem>
   </Form>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'LoginForm',
   props: {
-    emailRules: {
+    usernameRules: {
       type: Array,
       default: () => {
         return [
@@ -38,35 +47,59 @@ export default {
           { required: true, message: '密码不能为空', trigger: 'blur' }
         ]
       }
+    },
+    imageCodeRules: {
+      type: Array,
+      default: () => {
+        return [
+          { required: true, message: '验证码不能为空', trigger: 'blur' }
+        ]
+      }
     }
   },
   data () {
     return {
       form: {
-        email: 'baiding@123.com',
-        password: ''
-      }
+        username: 'admin',
+        password: '123',
+        imageCode: ''
+      },
+      imageUrl: ''
     }
   },
   computed: {
     rules () {
       return {
-        email: this.emailRules,
-        password: this.passwordRules
+        username: this.usernameRules,
+        password: this.passwordRules,
+        imageCode: this.imageCodeRules
       }
     }
   },
   methods: {
+    ...mapActions([
+      'handleImageCode'
+    ]),
     handleSubmit () {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.$emit('on-success-valid', {
-            email: this.form.email,
-            password: this.form.password
+            username: this.form.username,
+            password: this.form.password,
+            imageCode: this.form.imageCode,
           })
         }
       })
+    },
+    getImageCode () {
+      this.handleImageCode({username: this.form.username}).then(res => {
+        console.log("login-form#handleImageCode#res: " + res)
+        this.imageUrl = res
+      })
     }
+  },
+  mounted() {
+    this.getImageCode()
   }
 }
 </script>

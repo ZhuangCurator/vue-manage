@@ -1,10 +1,10 @@
-package com.baiding.vue.controller;
+package com.huahai.baiding.vue.controller;
 
-import com.baiding.vue.model.BaseStatusParam;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.vo.AlbumTrackParam;
-import com.baiding.vue.model.vo.AlbumTrackQueryCondition;
-import com.baiding.vue.service.AlbumTrackService;
+import com.huahai.baiding.vue.model.BaseStatusParam;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.vo.AlbumTrackParam;
+import com.huahai.baiding.vue.model.vo.AlbumTrackQueryCondition;
+import com.huahai.baiding.vue.service.AlbumTrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

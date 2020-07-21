@@ -1,12 +1,12 @@
-package com.baiding.vue.service.impl;
+package com.huahai.baiding.vue.service.impl;
 
-import com.baiding.vue.config.RegularCheck;
-import com.baiding.vue.dao.IndexDAO;
-import com.baiding.vue.model.Page;
-import com.baiding.vue.model.po.User;
-import com.baiding.vue.model.vo.UserParam;
-import com.baiding.vue.model.vo.UserQueryCondition;
-import com.baiding.vue.service.IndexService;
+import com.huahai.baiding.vue.config.RegularCheck;
+import com.huahai.baiding.vue.dao.IndexDAO;
+import com.huahai.baiding.vue.model.Page;
+import com.huahai.baiding.vue.model.po.User;
+import com.huahai.baiding.vue.model.vo.UserParam;
+import com.huahai.baiding.vue.model.vo.UserQueryCondition;
+import com.huahai.baiding.vue.service.IndexService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

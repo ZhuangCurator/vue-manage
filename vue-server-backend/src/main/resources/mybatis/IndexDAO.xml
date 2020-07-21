@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.baiding.vue.dao.IndexDAO">
+<mapper namespace="com.huahai.baiding.vue.dao.IndexDAO">
 
-    <resultMap id="user" type="com.baiding.vue.model.po.User">
+    <resultMap id="user" type="com.huahai.baiding.vue.model.po.User">
         <id column="id" property="id"/>
         <result column="email" property="email"/>
         <result column="name" property="name"/>
@@ -19,7 +19,7 @@
         SELECT * FROM user WHERE email = #{email} AND password = #{password}
     </select>
 
-    <select id="getUserCount" resultType="int" parameterType="com.baiding.vue.model.vo.UserQueryCondition">
+    <select id="getUserCount" resultType="int" parameterType="com.huahai.baiding.vue.model.vo.UserQueryCondition">
         SELECT COUNT(1) FROM user
         <where>
             <if test="email != null and email != ''">
@@ -35,7 +35,7 @@
         </where>
     </select>
 
-    <select id="getUserList" parameterType="com.baiding.vue.model.vo.UserQueryCondition"
+    <select id="getUserList" parameterType="com.huahai.baiding.vue.model.vo.UserQueryCondition"
             resultMap="user">
         SELECT * FROM user
         <where>
@@ -58,7 +58,7 @@
         SELECT * FROM user WHERE id = #{id}
     </select>
     
-    <update id="editUser" parameterType="com.baiding.vue.model.po.User">
+    <update id="editUser" parameterType="com.huahai.baiding.vue.model.po.User">
         UPDATE user
         <set>
             `name` = #{name},
@@ -68,7 +68,7 @@
         WHERE id = #{id}
     </update>
     
-    <insert id="addUser" parameterType="com.baiding.vue.model.po.User">
+    <insert id="addUser" parameterType="com.huahai.baiding.vue.model.po.User">
         INSERT INTO user(
           email,
           name,

@@ -1,4 +1,4 @@
-package com.baiding.vue.controller;
+package com.huahai.baiding.vue.controller;
 
 import com.baidu.ueditor.ActionEnter;
 import org.json.JSONObject;

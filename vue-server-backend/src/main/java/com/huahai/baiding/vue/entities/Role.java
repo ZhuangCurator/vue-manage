@@ -1,4 +1,4 @@
-package com.baiding.vue.entities;
+package com.huahai.baiding.vue.entities;
 
 import java.io.Serializable;
 

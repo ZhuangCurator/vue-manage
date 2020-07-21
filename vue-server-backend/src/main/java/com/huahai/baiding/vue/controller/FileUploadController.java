@@ -1,6 +1,6 @@
-package com.baiding.vue.controller;
+package com.huahai.baiding.vue.controller;
 
-import com.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,7 @@
-package com.baiding.vue.dao;
+package com.huahai.baiding.vue.dao;
 
-import com.baiding.vue.model.po.AlbumCategory;
-import com.baiding.vue.model.vo.AlbumCategoryQueryCondition;
+import com.huahai.baiding.vue.model.po.AlbumCategory;
+import com.huahai.baiding.vue.model.vo.AlbumCategoryQueryCondition;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

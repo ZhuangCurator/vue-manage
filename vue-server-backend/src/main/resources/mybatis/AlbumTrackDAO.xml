@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.baiding.vue.dao.AlbumTrackDAO">
+<mapper namespace="com.huahai.baiding.vue.dao.AlbumTrackDAO">
 
-    <resultMap id="albumTrack" type="com.baiding.vue.model.po.AlbumTrack">
+    <resultMap id="albumTrack" type="com.huahai.baiding.vue.model.po.AlbumTrack">
         <id property="id" column="id"></id>
         <result property="albumId" column="album_id"></result>
         <result property="title" column="title"></result>
@@ -23,7 +23,7 @@
         <result property="releaseTime" column="release_time"></result>
     </resultMap>
 
-    <select id="getAllAlbumTrack" parameterType="com.baiding.vue.model.vo.AlbumTrackQueryCondition"
+    <select id="getAllAlbumTrack" parameterType="com.huahai.baiding.vue.model.vo.AlbumTrackQueryCondition"
             resultMap="albumTrack">
         SELECT * FROM track
         <where>
@@ -43,7 +43,7 @@
         SELECT * FROM track WHERE id = #{id}
     </select>
 
-    <select id="getAlbumTrackCount" parameterType="com.baiding.vue.model.vo.AlbumTrackQueryCondition"
+    <select id="getAlbumTrackCount" parameterType="com.huahai.baiding.vue.model.vo.AlbumTrackQueryCondition"
         resultType="int">
         SELECT count(1) FROM track
         <where>
@@ -57,7 +57,7 @@
         </where>
     </select>
 
-    <insert id="addAlbumTrack" parameterType="com.baiding.vue.model.po.AlbumTrack">
+    <insert id="addAlbumTrack" parameterType="com.huahai.baiding.vue.model.po.AlbumTrack">
         INSERT INTO track(
             album_id,
             title,
@@ -93,7 +93,7 @@
         )
     </insert>
 
-    <update id="editAlbumTrack" parameterType="com.baiding.vue.model.po.AlbumTrack">
+    <update id="editAlbumTrack" parameterType="com.huahai.baiding.vue.model.po.AlbumTrack">
         UPDATE track
         <set>
             <if test="title != null and title != ''">

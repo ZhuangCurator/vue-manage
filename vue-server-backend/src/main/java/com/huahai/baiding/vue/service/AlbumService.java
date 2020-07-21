@@ -1,9 +1,9 @@
-package com.baiding.vue.service;
+package com.huahai.baiding.vue.service;
 
-import com.baiding.vue.model.Page;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.vo.AlbumParam;
-import com.baiding.vue.model.vo.AlbumQueryCondition;
+import com.huahai.baiding.vue.model.Page;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.vo.AlbumParam;
+import com.huahai.baiding.vue.model.vo.AlbumQueryCondition;
 
 /**
  * @Author: BaiDing

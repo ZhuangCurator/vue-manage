@@ -1,5 +1,5 @@
 import axios from './index'
-
+import qs from 'qs'
 // 用户分页查询
 export const userPage = (param) => {
   return axios.getRequest({
@@ -67,10 +67,34 @@ export const userRemoved = (param) => {
 }
 
 // 后台用户登录
+// export const login = (param) => {
+//   return axios.httpRequest({
+//     url: '/user/login',
+//     method: 'post',
+//     data: param
+//   })
+// }
+
+// 后台用户登录
 export const login = (param) => {
   return axios.httpRequest({
-    url: '/user/login',
+    url: '/authentication/form',
     method: 'post',
-    data: param
+    data: param,
+    transformRequest: [function (data) {
+      let ret = '';
+      ret = qs.stringify(data);
+      return ret;
+    }],
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+}
+export const imageCode = (param) => {
+  return axios.getRequest({
+    url: '/code/image',
+    method: 'get',
+    params: param
   })
 }

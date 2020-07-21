@@ -1,13 +1,13 @@
-package com.baiding.vue.service.impl;
+package com.huahai.baiding.vue.service.impl;
 
-import com.baiding.vue.dao.AlbumTrackDAO;
-import com.baiding.vue.model.BaseStatusParam;
-import com.baiding.vue.model.Page;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.po.AlbumTrack;
-import com.baiding.vue.model.vo.AlbumTrackParam;
-import com.baiding.vue.model.vo.AlbumTrackQueryCondition;
-import com.baiding.vue.service.AlbumTrackService;
+import com.huahai.baiding.vue.dao.AlbumTrackDAO;
+import com.huahai.baiding.vue.model.BaseStatusParam;
+import com.huahai.baiding.vue.model.Page;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.po.AlbumTrack;
+import com.huahai.baiding.vue.model.vo.AlbumTrackParam;
+import com.huahai.baiding.vue.model.vo.AlbumTrackQueryCondition;
+import com.huahai.baiding.vue.service.AlbumTrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

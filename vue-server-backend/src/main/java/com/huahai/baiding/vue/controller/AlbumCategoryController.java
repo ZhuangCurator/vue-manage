@@ -1,11 +1,11 @@
-package com.baiding.vue.controller;
+package com.huahai.baiding.vue.controller;
 
 
-import com.baiding.vue.model.BaseStatusParam;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.vo.AlbumCategoryParam;
-import com.baiding.vue.model.vo.AlbumCategoryQueryCondition;
-import com.baiding.vue.service.AlbumCategoryService;
+import com.huahai.baiding.vue.model.BaseStatusParam;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.vo.AlbumCategoryParam;
+import com.huahai.baiding.vue.model.vo.AlbumCategoryQueryCondition;
+import com.huahai.baiding.vue.service.AlbumCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

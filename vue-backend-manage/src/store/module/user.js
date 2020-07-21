@@ -1,22 +1,31 @@
 import { login, userPage, getUser, addUser, editUser, userRemoved,
-  userExport, userImportTemplate, userImport } from '@/api/user'
-import { setToken, getToken, setUserId, getUserId } from '@/libs/util'
+  userExport, userImportTemplate, userImport ,imageCode} from '@/api/user'
+import { setToken, getToken, setUsername, getUsername } from '@/libs/util'
 const state = {
-  userName: '',
-  userId: getUserId(),
+  userName: getUsername(),
   token: getToken(),
 }
 
 const actions = {
   handleLogin ({ commit }, param) {
     return new Promise((resolve, reject) => {
-      login(param).then(res => {
-        console.log('login#response', res)
-        const { fields } = res
+      login(param).then(data => {
+        console.log('login#response#data', data)
+        const { fields } = data
+        console.log('login#fields', fields)
         commit('setToken', fields.token)
-        commit('setUserId', fields.userId)
-        commit('setUserName', fields.userName)
-        resolve(res)
+        commit('setUserName', fields.username)
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  handleImageCode ({ commit }, param) {
+    return new Promise((resolve, reject) => {
+      imageCode(param).then(data => {
+        console.log('imageCode#response#data', data)
+        resolve(data)
       }).catch(error => {
         reject(error)
       })
@@ -26,7 +35,7 @@ const actions = {
   handleLogOut ({ commit }) {
     return new Promise((resolve) => {
       commit('setToken', '')
-      commit('setUserId', '')
+      commit('setUsername', '')
       resolve()
     })
   },
@@ -113,12 +122,9 @@ const actions = {
 }
 
 const mutations = {
-  setUserId (state, id) {
-    state.userId = id
-    setUserId(id)
-  },
-  setUserName (state, name) {
+  setUsername (state, name) {
     state.userName = name
+    setUsername(name)
   },
   setToken (state, token) {
     state.token = token

@@ -1,11 +1,11 @@
-package com.baiding.vue.controller;
+package com.huahai.baiding.vue.controller;
 
-import com.baiding.vue.model.Login;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.po.User;
-import com.baiding.vue.model.vo.UserParam;
-import com.baiding.vue.model.vo.UserQueryCondition;
-import com.baiding.vue.service.IndexService;
+import com.huahai.baiding.vue.model.Login;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.po.User;
+import com.huahai.baiding.vue.model.vo.UserParam;
+import com.huahai.baiding.vue.model.vo.UserQueryCondition;
+import com.huahai.baiding.vue.service.IndexService;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -37,9 +37,7 @@ public class IndexController {
     private IndexService indexService;
 
     @GetMapping("/userPage")
-    public Result queryUserByPagination(UserQueryCondition condition, HttpServletRequest request){
-        Object authorization = request.getHeader("token");
-        System.out.println(authorization.toString());
+    public Result queryUserByPagination(UserQueryCondition condition){
         return Result.build(1,"用户分页信息",indexService.userPage(condition));
     }
 

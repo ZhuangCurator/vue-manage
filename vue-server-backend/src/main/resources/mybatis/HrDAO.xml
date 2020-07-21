@@ -2,93 +2,25 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.baiding.vue.dao.IndexDAO">
+<mapper namespace="com.huahai.baiding.vue.dao.HrDAO">
 
-    <resultMap id="user" type="com.baiding.vue.model.po.User">
-        <id column="id" property="id"/>
-        <result column="email" property="email"/>
-        <result column="name" property="name"/>
-        <result column="password" property="password"/>
-        <result column="removed" property="removed"/>
-        <result column="sex" property="sex"/>
-        <result column="age" property="age"/>
-        <result column="register_date" property="registerDate"/>
+    <resultMap id="BaseResultMap" type="com.huahai.baiding.vue.entities.Hr">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="CHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="enabled" property="enabled" jdbcType="BIT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="validateuser" resultMap="user">
-        SELECT * FROM user WHERE email = #{email} AND password = #{password}
-    </select>
+    <select id="loadUserByUsername" resultMap="BaseResultMap">
+        select * from hr where username=#{username} or phone = #{username}
+  </select>
 
-    <select id="getUserCount" resultType="int" parameterType="com.baiding.vue.model.vo.UserQueryCondition">
-        SELECT COUNT(1) FROM user
-        <where>
-            <if test="email != null and email != ''">
-                AND email = #{email}
-            </if>
-            <if test="startRegisterDate != null and startRegisterDate != ''">
-                AND register_date between #{startRegisterDate} and #{endRegisterDate}
-            </if>
-            <if test="idArray != null and idArray.length > 0">
-                AND id IN
-                <foreach collection="idArray" item="userId" index="index" open="(" separator="," close=")">#{userId}</foreach>
-            </if>
-        </where>
-    </select>
-
-    <select id="getUserList" parameterType="com.baiding.vue.model.vo.UserQueryCondition"
-            resultMap="user">
-        SELECT * FROM user
-        <where>
-            <if test="email != null and email != ''">
-                AND email = #{email}
-            </if>
-            <if test="startRegisterDate != null and startRegisterDate != ''">
-                AND register_date between #{startRegisterDate} and #{endRegisterDate}
-            </if>
-            <if test="idArray != null and idArray.length > 0">
-                AND id IN
-                <foreach collection="idArray" item="userId" index="index" open="(" separator="," close=")">#{userId}</foreach>
-            </if>
-        </where>
-        ORDER BY register_date DESC
-        limit #{start},#{pageSize}
-    </select>
-
-    <select id="getUser" parameterType="long" resultMap="user">
-        SELECT * FROM user WHERE id = #{id}
-    </select>
-    
-    <update id="editUser" parameterType="com.baiding.vue.model.po.User">
-        UPDATE user
-        <set>
-            `name` = #{name},
-            sex = #{sex},
-            age = #{age}
-        </set>
-        WHERE id = #{id}
-    </update>
-    
-    <insert id="addUser" parameterType="com.baiding.vue.model.po.User">
-        INSERT INTO user(
-          email,
-          name,
-          password,
-          sex,
-          age,
-          removed,
-          register_date
-        )VALUES (
-          #{email},
-          #{name},
-          #{password},
-          #{sex},
-          #{age},
-          #{removed},
-          #{registerDate}
-        )
-    </insert>
-
-    <update id="changeUserRemoved">
-        UPDATE user set removed = #{removed} WHERE id = #{id}
-    </update>
+    <select id="getHrRolesById" resultType="com.huahai.baiding.vue.entities.Role">
+    select r.* from role r,hr_role hrr where hrr.`rid`=r.`id` and hrr.`hrid`=#{id}
+  </select>
 </mapper>

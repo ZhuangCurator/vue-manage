@@ -15,6 +15,7 @@
     "axios": "^0.18.0",
     "iview": "^3.1.5",
     "js-cookie": "^2.2.0",
+    "qs": "^6.9.4",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-ueditor-wrap": "^1.5.0",

@@ -1,4 +1,4 @@
-package com.baiding.vue.model;
+package com.huahai.baiding.vue.model;
 
 import java.util.List;
 

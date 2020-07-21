@@ -1,11 +1,11 @@
-package com.baiding.vue.service.impl;
+package com.huahai.baiding.vue.service.impl;
 
-import com.baiding.vue.dao.AlbumCategoryDAO;
-import com.baiding.vue.model.Result;
-import com.baiding.vue.model.po.AlbumCategory;
-import com.baiding.vue.model.vo.AlbumCategoryParam;
-import com.baiding.vue.model.vo.AlbumCategoryQueryCondition;
-import com.baiding.vue.service.AlbumCategoryService;
+import com.huahai.baiding.vue.dao.AlbumCategoryDAO;
+import com.huahai.baiding.vue.model.Result;
+import com.huahai.baiding.vue.model.po.AlbumCategory;
+import com.huahai.baiding.vue.model.vo.AlbumCategoryParam;
+import com.huahai.baiding.vue.model.vo.AlbumCategoryQueryCondition;
+import com.huahai.baiding.vue.service.AlbumCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

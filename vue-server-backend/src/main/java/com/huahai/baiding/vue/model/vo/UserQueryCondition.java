@@ -1,4 +1,4 @@
-package com.baiding.vue.model.vo;
+package com.huahai.baiding.vue.model.vo;
 
 /**
  * @Author: BaiDing

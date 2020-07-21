@@ -1,4 +1,4 @@
-package com.baiding.vue.entities;
+package com.huahai.baiding.vue.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,10 +1,7 @@
-package com.baiding.vue.dao;
+package com.huahai.baiding.vue.dao;
 
-import com.baiding.vue.entities.Hr;
-import com.baiding.vue.entities.Role;
-import com.baiding.vue.model.po.User;
-import com.baiding.vue.model.vo.UserQueryCondition;
-import org.apache.ibatis.annotations.Param;
+import com.huahai.baiding.vue.entities.Hr;
+import com.huahai.baiding.vue.entities.Role;
 
 import java.util.List;
 

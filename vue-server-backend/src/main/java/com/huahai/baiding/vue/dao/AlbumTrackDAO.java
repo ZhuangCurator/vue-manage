@@ -1,7 +1,7 @@
-package com.baiding.vue.dao;
+package com.huahai.baiding.vue.dao;
 
-import com.baiding.vue.model.po.AlbumTrack;
-import com.baiding.vue.model.vo.AlbumTrackQueryCondition;
+import com.huahai.baiding.vue.model.po.AlbumTrack;
+import com.huahai.baiding.vue.model.vo.AlbumTrackQueryCondition;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 import Message from 'iview/src/components/message'
 import router from '@/router'
-
+import { getToken } from '@/libs/util'
 
 class HttpRequest {
   // 每个类都必须有的
@@ -11,17 +11,14 @@ class HttpRequest {
   }
 
   httpRequestConfig () {
-    const token = store.state.user.token
-    const userId = store.state.user.userId
-    const config = {
+    const token = getToken()
+    return {
       baseURL: this.baseUrl,
       headers: {
-        userId: userId,
-        token: token
+        Authorization: token
       }
 
     }
-    return config
   }
 
   uploadRequestConfig () {
@@ -53,7 +50,7 @@ class HttpRequest {
     // 响应拦截器
     instance.interceptors.response.use(res => {
       const { data } = res
-      console.log('interceptors#response:', res)
+      console.log('interceptors#response#data:', data)
       if (data.status === -1) {
         Message.error({
           content: '登录信息过期，请重新登录...',

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.baiding.vue.dao.AlbumDAO">
+<mapper namespace="com.huahai.baiding.vue.dao.AlbumDAO">
 
-    <resultMap id="album" type="com.baiding.vue.model.po.Album">
+    <resultMap id="album" type="com.huahai.baiding.vue.model.po.Album">
         <id property="id" column="id"/>
         <result property="anchor" column="anchor"/>
         <result property="categoryId" column="category_id"/>
@@ -27,7 +27,7 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <select id="getAllAlbum" parameterType="com.baiding.vue.model.vo.AlbumQueryCondition"
+    <select id="getAllAlbum" parameterType="com.huahai.baiding.vue.model.vo.AlbumQueryCondition"
             resultMap="album">
         SELECT * FROM album
         <where>
@@ -48,7 +48,7 @@
         limit #{start},#{pageSize}
     </select>
 
-    <select id="getAllAlbumCount" parameterType="com.baiding.vue.model.vo.AlbumQueryCondition"
+    <select id="getAllAlbumCount" parameterType="com.huahai.baiding.vue.model.vo.AlbumQueryCondition"
             resultType="int">
         SELECT count(1) FROM album
         <where>
@@ -71,7 +71,7 @@
         SELECT * FROM album WHERE  id = #{id}
     </select>
 
-    <insert id="addlbum" parameterType="com.baiding.vue.model.po.Album">
+    <insert id="addlbum" parameterType="com.huahai.baiding.vue.model.po.Album">
         INSERT INTO album(
             category_id,
             anchor,
@@ -115,7 +115,7 @@
         )
     </insert>
 
-    <update id="editALbum" parameterType="com.baiding.vue.model.po.Album">
+    <update id="editALbum" parameterType="com.huahai.baiding.vue.model.po.Album">
         UPDATE album
         <set>
             <if test="title != null and title != ''">

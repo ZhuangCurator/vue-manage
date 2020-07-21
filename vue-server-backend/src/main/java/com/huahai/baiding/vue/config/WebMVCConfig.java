@@ -1,4 +1,4 @@
-package com.baiding.vue.config;
+package com.huahai.baiding.vue.config;
 
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
